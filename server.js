@@ -42,8 +42,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 const authRoutes = require('./src/routes/authRoutes');
 const productRoutes = require('./src/routes/productRoutes');
 
+// Support both /api prefixes and direct prefixes
 app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/products', productRoutes);
 
 // Health Check Route
 app.get('/', (req, res) => {
